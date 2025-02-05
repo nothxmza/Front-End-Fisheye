@@ -6,7 +6,7 @@ body {
 }
 
 
-header {
+nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -31,6 +31,10 @@ h1 {
     margin-top: 100px;
 }
 
+.photographer_section article a {
+    text-decoration: none;
+}
+
 .photographer_section article {
     justify-self: center;
     display: flex;
@@ -42,9 +46,49 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.photographer_section .country{
+    color: #901C1C;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.photographer_section article p {
+    color: black;
+    font-size: 10px;
+    margin: 0;
+    text-align: center;
+    font-weight: 400;
+}
+
+.photographer_section article span{
+    color: #757575;
+    font-weight: 400;
+    font-size: 9px;
+    margin-top: 3px;
+}
+
+.header_card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer_card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
