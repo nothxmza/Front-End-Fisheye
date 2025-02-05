@@ -9,6 +9,10 @@ function photographerTemplate(data) {
         const headerCard = document.createElement( 'div' );
         headerCard.classList.add( 'header_card' );
         const link = document.createElement( 'a' );
+        link.setAttribute("href", `photographer.html?id=${id}`);
+        link.setAttribute("aria-label", `Voir la page de ${name}`);
+        link.setAttribute("role", "link");
+        link.setAttribute("tabindex", "0");
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.setAttribute("alt", name)
