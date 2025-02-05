@@ -7,3 +7,9 @@ const getPhotographers = async () => {
 		console.error(e);
 	}
 }
+
+const getPhotographerById = async (id) => {
+	const data = await getPhotographers();
+	let photographer = data.photographers.find(photographer => photographer.id == id);
+	return photographer;
+}
