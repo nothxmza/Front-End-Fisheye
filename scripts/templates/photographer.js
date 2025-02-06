@@ -57,9 +57,11 @@ function photographerTemplate(data) {
         taglineP.textContent = tagline;
 
         const contactButton = document.createElement('button');
-        contactButton.classList.add('contact_button');
+        contactButton.classList.add('contact_button', 'focusable');
         contactButton.textContent = 'Contactez-moi';
         contactButton.setAttribute('aria-label', `Contactez ${name}`);
+        contactButton.setAttribute('role', 'button');
+        contactButton.setAttribute('tabindex', '0');
         contactButton.addEventListener('click', () => {
             console.log("ok")
             displayModal();

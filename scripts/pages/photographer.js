@@ -36,6 +36,7 @@ const init = async () => {
 	photographerTplt.formContactTitle();
 	photographerTplt.displayInfoPhotographer(totalLike(photographerData.media));
 	displayMedia(photographerTplt,photographerData.media);
+	photographerNavigation();
 }
 
 init();

@@ -13,7 +13,7 @@
 	<body>
 		<header>
 			<nav>
-				<a href="./index.html">
+				<a href="./index.html" tabindex="0" class="focusable">
 					<img src="assets/images/logo.png" class="logo" alt="Fisheye logo"/>
 				</a>
 			</nav>
@@ -50,7 +50,7 @@
 					<div class="modal-header-title">
 						<h2 role="heading">Contactez-moi</h2>
 					</div>
-					<button class="close-modal" onclick="closeModal()" aria-label="Fermer la fenêtre">
+					<button class="close-modal" onclick="closeModal()" aria-label="Close Contact form">
 						<img src="assets/icons/close.svg" alt="Fermer" />
 					</button>
 				</div>
@@ -75,6 +75,7 @@
 				<button id="send" class="contact_button" aria-label="send" type="button" onclick="sendDataForm()">Envoyer</button>
 			</div>
 		</div>
+		<script src="scripts/utils/keyboardNavigation.js"></script>
 		<script src="scripts/factory/media.js"></script>
 		<script src="scripts/utils/api.js"></script>
 		<script src="scripts/utils/contactForm.js"></script>

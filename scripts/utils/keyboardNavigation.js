@@ -30,3 +30,37 @@ const homeNavigation = () => {
 	});
 	updateFocus(currentIndex);
 }
+
+
+const photographerNavigation = () => {
+	const focusableElements = document.querySelectorAll('.focusable');
+	console.log(focusableElements);
+	if(focusableElements.length === 0)
+		return;
+
+	let currentIndex = 0;
+
+	const updateFocus = (i) => {
+		focusableElements[i].focus();
+	}
+
+	document.addEventListener('keydown', (e) => {
+		if(e.key === 'ArrowRight'){
+			if(currentIndex + 1 < focusableElements.length){
+				currentIndex++;
+			}else{
+				currentIndex = 0;
+			}
+			updateFocus(currentIndex);
+		}else if(e.key === 'ArrowLeft'){
+			if(currentIndex - 1 >= 0){
+				currentIndex--;
+			}else{
+				currentIndex = focusableElements.length - 1;
+			}
+			updateFocus(currentIndex);
+		}else if(e.key === 'Enter'){
+			focusableElements[currentIndex].click();
+		}
+	});
+}
