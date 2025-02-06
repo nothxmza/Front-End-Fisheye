@@ -210,7 +210,7 @@ select{
 .card-media img{
     height: 400px;
     width: 400px;
-    background-size: cover;
+	object-fit: cover;
 }
 .card-media video{
     height: 400px;
