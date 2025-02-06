@@ -11,5 +11,6 @@ const getPhotographers = async () => {
 const getPhotographerById = async (id) => {
 	const data = await getPhotographers();
 	let photographer = data.photographers.find(photographer => photographer.id == id);
-	return photographer;
+	let media = data.media.filter(media => media.photographerId == id);
+	return {photographer, media};
 }

@@ -1,40 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <a href="./index.html" alt="Fisheye Home page">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye logo"/>
-      </a>
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
+	<head>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<meta charset="utf-8">
+		<link rel="icon" type="image/png" href="assets/favicon.png">
+		<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+		<title>Fisheye - photographe </title>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a href="./index.html">
+					<img src="assets/images/logo.png" class="logo" alt="Fisheye logo"/>
+				</a>
+			</nav>
+		</header>
+		<main id="main">
+			<section>
+				<div class="photograph-header">
+				 <div class="photograph-header-left"></div>
+				 <div class="photograph-header-middle"></div>
+				 <div class="photograph-header-right"></div>
+				</div>
+			</section>
+			<section>
+				<div class="photograph-filter">
+					<div class="filter">
+						<label for="order_by">Trier par</label>
+						<select name="order_by" id="order_by">
+							<option value="1">Popularité</option>
+							<option value="2">Date</option>
+							<option value="3">Titre</option>
+						</select>
 					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="scripts/utils/api.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/utils/contactForm.js"></script>
-  </body>
+				</div>
+			</section>
+			<section>
+				<div id="contact_modal" role="dialog">
+					<div class="modal-background"></div>
+					<div class="modal">
+						<div class="modal-header">
+							<div class="modal-header-title">
+								<h2 role="heading">Contactez-moi</h2>
+							</div>
+							<img src="assets/icons/close.svg" onclick="closeModal()" alt="close contact modal"/>
+						</div>
+						<form>
+							<div>
+								<label for="first-name">Prénom</label>
+								<input id="first-name" type="text" aria-label="First name"/>
+							</div>
+							<div>
+								<label for="last-name">Nom</label>
+								<input id="last-name" type="text" aria-label="Last name"/>
+							</div>
+							<div>
+								<label for="email">Email</label>
+								<input id="email" type="email" aria-label="Email"/>
+							</div>
+							<div>
+								<label for="message">Votre message</label>
+								<textarea id="message" aria-label="You message"></textarea>
+							</div>
+						</form>
+						<button id="send" class="contact_button" aria-label="send" type="button" onclick="sendDataForm()">Envoyer</button>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="media"></div>
+				<div class="info"></div>
+			</section>
+		</main>
+		<script src="scripts/factory/media.js"></script>
+		<script src="scripts/utils/api.js"></script>
+		<script src="scripts/utils/contactForm.js"></script>
+		<script src="scripts/templates/photographer.js"></script>
+		<script src="scripts/pages/photographer.js"></script>
+	</body>
 </html>
