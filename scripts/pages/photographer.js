@@ -1,4 +1,7 @@
 //Mettre le code JavaScript lié à la page photographer.html
+import { photographerTemplate } from "../templates/photographer.js";
+import { getPhotographerById } from "../utils/api.js";
+import { photographerNavigation } from "../utils/keyboardNavigation.js";
 
 const sendDataForm = () => {
 	const firstName = document.getElementById('first-name').value;
@@ -8,6 +11,8 @@ const sendDataForm = () => {
 	console.log(`firstname: ${firstName} \nlastname: ${lastName} \nemail: ${email}\nmessage: ${message}`);
 }
 
+window.sendDataForm = sendDataForm;
+
 const totalLike = (media) => {
 	let total = 0;
 	media.forEach(media => {
@@ -16,12 +21,12 @@ const totalLike = (media) => {
 	return total;
 }
 
-const displayMedia = (photographerTplt,media) => {
+const displayMedia = (photographerTplt,photographerMedia) => {
 	const mediaSection = document.querySelector('.media');
 	mediaSection.innerHTML = '';
 
-	media.forEach((media, i) => {
-		const mediaCard = photographerTplt.mediaCard(media);
+	photographerMedia.forEach((media, i) => {
+		const mediaCard = photographerTplt.mediaCard(media,photographerMedia,i, photographerTplt);
 		mediaSection.appendChild(mediaCard);
 	});
 }

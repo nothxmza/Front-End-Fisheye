@@ -1,4 +1,8 @@
-    async function displayData(photographers) {
+   import { getPhotographers } from "../utils/api.js";
+   import { photographerTemplate } from "../templates/photographer.js";
+    import { homeNavigation } from "../utils/keyboardNavigation.js";
+   
+   async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {

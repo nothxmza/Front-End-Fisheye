@@ -1,4 +1,8 @@
-function photographerTemplate(data) {
+import { MediaFactory } from "../factory/media.js";
+import {closeModalLightbox, displayModalLightbox, navigationChevronOnClick } from "../utils/lightbox.js";
+import { displayModal } from "../utils/contactForm.js";
+
+export function photographerTemplate(data) {
     console.log(data);
     const { id, name, city, country, tagline, price, portrait } = data;
 
@@ -113,16 +117,22 @@ function photographerTemplate(data) {
         info.appendChild(infoPhotograph);
     }
 
-    function mediaCard(media){
+    function mediaCard(media, mediaList, mediaIndex, photographerTemplate) {
         const card = document.createElement('article');
+        const lightbox = document.querySelector('.lightbox');
         card.classList.add('card');
         card.setAttribute('role', 'article');
         card.setAttribute('aria-label', media.title);
 
         const cardMedia = document.createElement('div');
         cardMedia.classList.add('card-media');
-        const mediaElement = MediaFactory.createMedia(media);
+        const mediaElement = MediaFactory.createMedia(media, false);
         cardMedia.appendChild(mediaElement.render());
+        cardMedia.addEventListener('click', () => {
+            lightbox.innerHTML = '';
+            displayModalLightbox();
+            displayLightbox(mediaList, mediaIndex, photographerTemplate);
+        });
 
         const cardContent = document.createElement('div');
         cardContent.classList.add('card-content');
@@ -147,5 +157,54 @@ function photographerTemplate(data) {
         return card;
     }
 
-    return { name, picture, getUserCardDOM, displayPhotographerData, formContactTitle, displayInfoPhotographer, mediaCard };
+    function displayLightbox(media, i, photographertemplate){
+        console.log(i);
+        const lightbox = document.querySelector('.lightbox');
+        lightbox.setAttribute('role', 'dialog');
+        lightbox.setAttribute('aria-label', 'image closeup  view')
+        const leftLightbox = document.createElement('div');
+        leftLightbox.classList.add('left-lightbox');
+        const chevronLeft = document.createElement('i');
+        chevronLeft.classList.add('fa-solid', 'fa-chevron-left', 'chevron-left');
+        chevronLeft.setAttribute('aria-label', 'previous image');
+        chevronLeft.setAttribute('role', 'link');
+        leftLightbox.appendChild(chevronLeft);
+        const middleLightbox = document.createElement('div');
+        middleLightbox.classList.add('middle-lightbox');
+
+        const mediaElement = MediaFactory.createMedia(media[i], true);
+        middleLightbox.appendChild(mediaElement.render());
+
+        const title = document.createElement('p');
+        title.textContent = media[i].title;
+        title.setAttribute('role', 'text');
+        middleLightbox.appendChild(title);
+
+        const rightLightbox = document.createElement('div');
+        rightLightbox.classList.add('right-lightbox');
+        const closeBtn = document.createElement('button');
+        closeBtn.classList.add('close-btn');
+        closeBtn.setAttribute('aria-label', 'close dialog');
+        closeBtn.setAttribute('role', 'button');
+        closeBtn.addEventListener('click', () => {
+            closeModalLightbox();
+        });
+        const closeIcon = document.createElement('i');
+        closeIcon.classList.add('fa-solid', 'fa-x');
+        closeBtn.appendChild(closeIcon);
+        rightLightbox.appendChild(closeBtn);
+        const chevronRight = document.createElement('i');
+        chevronRight.classList.add('fa-solid', 'fa-chevron-right', 'chevron-right');
+        chevronRight.setAttribute('aria-label', 'next image');
+        chevronRight.setAttribute('role', 'link');
+        rightLightbox.appendChild(chevronRight);
+
+        lightbox.appendChild(leftLightbox);
+        lightbox.appendChild(middleLightbox);
+        lightbox.appendChild(rightLightbox);
+
+        navigationChevronOnClick(media, i, photographertemplate);
+    }
+
+    return { name, picture, getUserCardDOM, displayPhotographerData, formContactTitle, displayInfoPhotographer, mediaCard, displayLightbox };
 }

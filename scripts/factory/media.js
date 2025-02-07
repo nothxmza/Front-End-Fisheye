@@ -1,9 +1,9 @@
-class MediaFactory {
-    static createMedia(mediaData) {
+export class MediaFactory {
+    static createMedia(mediaData, flag) {
         if (mediaData.image) {
             return new ImageMedia(mediaData);
         } else if (mediaData.video) {
-            return new VideoMedia(mediaData);
+            return new VideoMedia(mediaData, flag);
         }
     }
 }
@@ -23,16 +23,21 @@ class ImageMedia {
 }
 
 class VideoMedia {
-    constructor(mediaData) {
+    constructor(mediaData, flag) {
         this.title = mediaData.title;
         this.video = mediaData.video;
         this.likes = mediaData.likes;
+        this.flag = flag;
     }
     render() {
         const video = document.createElement('video');
         const source = document.createElement('source');
         source.setAttribute('src', `assets/sample/${this.video}`);
         source.setAttribute('type', 'video/mp4');
+        if (this.flag){
+            video.setAttribute('autoplay', '');
+            video.setAttribute('controls', '');
+        }
         video.appendChild(source);
         return video;
     }

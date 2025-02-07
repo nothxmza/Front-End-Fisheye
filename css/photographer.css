@@ -98,13 +98,6 @@
     margin: 0;
     text-align: left;
 }
-.modal header img {
-	cursor: pointer;
-}
-.modal header h2 {
-	font-size: 60px;
-	font-weight: normal;
-}
 .close-modal{
 	cursor: pointer;
 	background: none;
@@ -207,7 +200,7 @@ select{
 }
 
 .media{
-    margin: 0 100px;
+    margin: 0 100px 50px 100px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 30px;
@@ -225,11 +218,13 @@ select{
     height: 400px;
     width: 400px;
 	object-fit: cover;
+	border-radius: 5px;
 }
 .card-media video{
     height: 400px;
     width: 400px;
     object-fit: fill;
+	border-radius: 5px;
 }
 .card-content{
     display: flex;
@@ -255,4 +250,60 @@ select{
 .card-likes p{
     font-size: 20px;
     font-weight: 500;
+}
+#lightbox-modal {
+    display: none;
+}
+.lightbox{
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    padding: 60px 80px;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    gap: 20px;
+    align-items: center;
+    width: fit-content;
+}
+
+.lightbox i{
+	color: #901C1C;
+	font-size: 40px;
+	cursor: pointer;
+}
+
+.middle-lightbox{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.middle-lightbox img, video{
+    height: 900px;
+    width: 1050px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.middle-lightbox video{
+	object-fit: fill;
+}
+.middle-lightbox img{
+	object-fit: cover;
+}
+
+.middle-lightbox p{
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+    color:#901C1C;
+}
+
+.close-btn{
+    cursor: pointer;
+    position: absolute;
+    top: 60px;
+	background: none;
+	border: none;
 }
