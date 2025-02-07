@@ -30,11 +30,16 @@
 				<div class="photograph-filter">
 					<div class="filter">
 						<label for="order_by">Trier par</label>
-						<select name="order_by" id="order_by">
-							<option value="1">Popularité</option>
-							<option value="2">Date</option>
-							<option value="3">Titre</option>
-						</select>
+						<div class="custom-select">
+							<button id="select-button" class="filterToggle" role="button" aria-haspopup="listbox" aria-expanded="false">
+								Popularité <i class="fa-solid fa-chevron-down chevron-select"></i>
+							</button>
+							<ul id="select-options" class="hidden" role="listbox" aria-labelledby="order_by" aria-activedescendant="popular">
+								<li id="popular" class="selected" role="option" aria-selected="true">Popularité</li>
+								<li id="date" role="option" aria-selected="false">Date</li>
+								<li id="title" role="option" aria-selected="false">Titre</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</section>

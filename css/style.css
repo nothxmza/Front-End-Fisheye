@@ -63,6 +63,7 @@ h1 {
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+    overflow-clip-margin: unset
 }
 
 .photographer_section article p {

@@ -51,6 +51,8 @@
 	height: 200px;
 	width: 200px;
 	border-radius: 50%;
+	object-fit: cover;
+    overflow-clip-margin: unset
 }
 
 .contact_button {
@@ -306,4 +308,97 @@ select{
     top: 60px;
 	background: none;
 	border: none;
+}
+.custom-select {
+    position: relative;
+}
+
+
+.custom-select i {
+	color: white;
+	font-size: 16px;
+}
+
+.filter label{
+    color: black;
+    font-size: 18px;
+    font-weight: 700;
+}
+.filterToggle{
+    color: white;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 10px;
+    font-size: 18px;
+    font-weight: 400;
+	width: 150px;
+	justify-content: space-between;
+}
+.filterToggle.active i{
+	transform: rotate(180deg);
+	position: relative;
+}
+.filterToggle.active{
+	border-radius: 5px 5px 0 0;
+
+}
+
+.filterToggle.active::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: white;
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+ #select-options{
+	z-index: 1;
+	border-radius: 0 0 5px 5px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0!important;
+    background-color: #901C1C;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+	width: 150px;
+}
+#select-options li{
+    color: white;
+    padding: 20px 8px;
+    font-size: 18px;
+}
+
+#select-options li:not(.last-visible)::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#select-options .last-visible{
+	padding-top: 0;
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: block;
 }

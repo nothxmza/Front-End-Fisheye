@@ -117,9 +117,10 @@ export function photographerTemplate(data) {
         info.appendChild(infoPhotograph);
     }
 
-    function mediaCard(media, mediaList, mediaIndex, photographerTemplate) {
+    function mediaCard(media, mediaList, mediaIndex, photographerTemplate, updateTotalLikes) {
         const card = document.createElement('article');
         const lightbox = document.querySelector('.lightbox');
+        let mediaLikes = media.likes;
         card.classList.add('card');
         card.setAttribute('role', 'article');
         card.setAttribute('aria-label', media.title);
@@ -147,7 +148,13 @@ export function photographerTemplate(data) {
         const heart = document.createElement('i');
         heart.classList.add('fa-solid', 'fa-heart');
         heart.setAttribute('aria-label', 'likes');
-        
+        heart.addEventListener('click', () => {
+            if(media.likes === mediaLikes){
+                media.likes++;
+                likes.textContent = media.likes;
+                updateTotalLikes();
+            }
+        });
     
         cardLikes.appendChild(heart);
         cardContent.appendChild(cardLikes);
