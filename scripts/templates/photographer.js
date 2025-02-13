@@ -1,5 +1,5 @@
 import { MediaFactory } from "../factory/media.js";
-import {closeModalLightbox, displayModalLightbox, navigationChevronOnClick } from "../utils/lightbox.js";
+import {closeModalLightbox, displayModalLightbox, navigationChevron } from "../utils/lightbox.js";
 import { displayModal } from "../utils/contactForm.js";
 
 export function photographerTemplate(data) {
@@ -128,11 +128,21 @@ export function photographerTemplate(data) {
         const cardMedia = document.createElement('div');
         cardMedia.classList.add('card-media');
         const mediaElement = MediaFactory.createMedia(media, false);
+        cardMedia.setAttribute('role', 'link');
+        cardMedia.setAttribute('tabindex', '0');
         cardMedia.appendChild(mediaElement.render());
         cardMedia.addEventListener('click', () => {
             lightbox.innerHTML = '';
             displayModalLightbox();
             displayLightbox(mediaList, mediaIndex, photographerTemplate);
+        });
+
+        cardMedia.addEventListener('keydown', (e) => {
+            if(e.key === 'Enter'){
+                lightbox.innerHTML = '';
+                displayModalLightbox();
+                displayLightbox(mediaList, mediaIndex, photographerTemplate);
+            }
         });
 
         const cardContent = document.createElement('div');
@@ -210,7 +220,7 @@ export function photographerTemplate(data) {
         lightbox.appendChild(middleLightbox);
         lightbox.appendChild(rightLightbox);
 
-        navigationChevronOnClick(media, i, photographertemplate);
+        navigationChevron(media, i, photographertemplate);
     }
 
     return { name, picture, getUserCardDOM, displayPhotographerData, formContactTitle, displayInfoPhotographer, mediaCard, displayLightbox };

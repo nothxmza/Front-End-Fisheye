@@ -11,24 +11,41 @@ export const displayModalLightbox = () => {
 	modal.style.display = "block";
 }
 
-export const navigationChevronOnClick = (media, i, photographerTemplate) => {
-	const lightbox = document.querySelector('.lightbox');
-	const chevronLeft = document.querySelector('.chevron-left');
-	const chevronRight = document.querySelector('.chevron-right');
+export const navigationChevron = (media, i, photographerTemplate) => {
+    const lightbox = document.querySelector('.lightbox');
+    const chevronLeft = document.querySelector('.chevron-left');
+    const chevronRight = document.querySelector('.chevron-right');
 
-	chevronLeft.addEventListener('click', () => {
-		lightbox.innerHTML = '';
-		console.log(i);
-		if(i === 0) {
-			i = 1;
-		}
-		photographerTemplate.displayLightbox(media, i - 1, photographerTemplate);
-	});
-	chevronRight.addEventListener('click', () => {
-		lightbox.innerHTML = '';
-		if(i === media.length - 1) {
-			i = i -1;
-		}
-		photographerTemplate.displayLightbox(media, i + 1, photographerTemplate);
-	});
+    const handlePrevious = () => {
+        lightbox.innerHTML = '';
+        if(i === 0) {
+            i = 1;
+        }
+        photographerTemplate.displayLightbox(media, i - 1, photographerTemplate);
+    };
+
+    const handleNext = () => {
+        lightbox.innerHTML = '';
+        if(i === media.length - 1) {
+            i = i - 1;
+        }
+        photographerTemplate.displayLightbox(media, i + 1, photographerTemplate);
+    };
+
+    chevronLeft.addEventListener('click', handlePrevious);
+    chevronRight.addEventListener('click', handleNext);
+
+	if(lightbox){
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') {
+				handlePrevious();
+			} else if (e.key === 'ArrowRight') {
+				handleNext();
+			} else if (e.key === 'Escape') {
+				console.log("fmewomoei")
+				closeModalLightbox();
+			}
+    	});
+	}
+    
 }

@@ -4,7 +4,6 @@ export function displayModal() {
     modal.classList.remove("modal-close");
     modal.classList.add("modal-open");
     modal.setAttribute("aria-hidden", "false");
-    
 }
 
 function closeModal() {

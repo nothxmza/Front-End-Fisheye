@@ -91,8 +91,46 @@ const customSelect = (media,photographerTplt) => {
 				item.classList.remove("hidden");
 			}
 		});
+
+		button.addEventListener("click", () => {
+			options.classList.toggle("hidden");
+			button.classList.toggle("active");
+		});
 	});
+	button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            button.classList.toggle('active');
+            if (button.classList.contains('active')) {
+                optionItems[0].focus();
+            }
+        }
+    });
 	optionItems.forEach(item => {
+		item.setAttribute("tabindex", "0");
+		item.addEventListener("keydown", (e) => {
+			if (e.key === "Enter") {
+                e.preventDefault();
+                button.innerHTML = `${item.textContent} <i class="fa-solid fa-chevron-down chevron-select"></i>`;
+                button.setAttribute("aria-expanded", "false");
+                button.classList.remove("active");
+
+                options.classList.add("hidden");
+                options.setAttribute("aria-activedescendant", item.id);
+
+                optionItems.forEach((i) =>{
+                    i.classList.remove("selected");
+                    i.setAttribute("aria-selected", "false");
+                });
+
+                item.classList.add("selected");
+                item.setAttribute("aria-selected", "true");
+
+                fitlerMedia(media, item.id, photographerTplt);
+                updateBorders();
+                button.focus();
+            }
+        });
+
 		item.addEventListener("click", () => {
 			button.innerHTML = `${item.textContent} <i class="fa-solid fa-chevron-down chevron-select"></i>`;
 			button.setAttribute("aria-expanded", "false");
