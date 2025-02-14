@@ -32,6 +32,7 @@ class VideoMedia {
     render() {
         const video = document.createElement('video');
         const source = document.createElement('source');
+        video.setAttribute('title', this.title);
         source.setAttribute('src', `assets/sample/${this.video}`);
         source.setAttribute('type', 'video/mp4');
         if (this.flag){

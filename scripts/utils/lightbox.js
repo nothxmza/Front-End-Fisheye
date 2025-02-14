@@ -35,17 +35,15 @@ export const navigationChevron = (media, i, photographerTemplate) => {
     chevronLeft.addEventListener('click', handlePrevious);
     chevronRight.addEventListener('click', handleNext);
 
-	if(lightbox){
-		document.addEventListener('keydown', (e) => {
-			if (e.key === 'ArrowLeft') {
-				handlePrevious();
-			} else if (e.key === 'ArrowRight') {
-				handleNext();
-			} else if (e.key === 'Escape') {
-				console.log("fmewomoei")
-				closeModalLightbox();
-			}
-    	});
-	}
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            handlePrevious();
+        } else if (e.key === 'ArrowRight') {
+            handleNext();
+        } else if (e.key === 'Escape') {
+            console.log("fmewomoei")
+            closeModalLightbox();
+        }
+    });
     
 }

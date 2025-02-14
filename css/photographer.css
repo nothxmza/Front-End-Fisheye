@@ -95,10 +95,11 @@
 	margin: 0;
 	text-align: left;
 }
-.modal-header-title h2 {
+.modal-header-title h1 {
     font-size: 60px;
     margin: 0;
     text-align: left;
+    color: black;
 }
 .close-modal{
 	cursor: pointer;
@@ -157,6 +158,7 @@ form textarea {
 .filter{
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 .filter label{
     color: black;
@@ -202,7 +204,7 @@ select{
 }
 
 .media{
-    margin: 0 100px 50px 100px;
+    margin: 100px auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 30px;
@@ -225,7 +227,7 @@ select{
 .card-media video{
     height: 400px;
     width: 400px;
-    object-fit: fill;
+    object-fit: cover;
 	border-radius: 5px;
 }
 .card-content{
@@ -262,11 +264,12 @@ select{
     display: flex;
     padding: 60px 80px;
     position: absolute;
-    top: 50%;
     z-index: 2;
     gap: 20px;
     align-items: center;
-    width: fit-content;
+    width: 50%;
+	top: 50%;
+	left: 25%;
 }
 
 .lightbox i{
@@ -279,17 +282,20 @@ select{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 1050px;
+
 }
 .middle-lightbox img, video{
     height: 900px;
-    width: 1050px;
+    width: 100%;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    overflow-clip-margin: unset
 }
 .middle-lightbox video{
-	object-fit: fill;
+	object-fit: cover;
 }
 .middle-lightbox img{
 	object-fit: cover;
@@ -373,14 +379,17 @@ select{
     background-color: #901C1C;
     border: none;
     border-radius: 0 0 5px 5px;
-    padding: 10px;
 	width: 150px;
     cursor: pointer;
 }
 #select-options li{
     color: white;
-    padding: 20px 8px;
+    padding: 10px 8px 0 8px;
     font-size: 18px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 #select-options li:not(.last-visible)::after {
@@ -389,15 +398,11 @@ select{
     height: 1px;
     background-color: white;
     width: 100%;
-    margin-top: 10px;
-}
-
-#select-options .last-visible{
-	padding-top: 0;
+    
 }
 
 .hidden{
-    display: none;
+    display: none!important;
 }
 
 .show{

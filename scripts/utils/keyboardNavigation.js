@@ -25,12 +25,9 @@ export const homeNavigation = () => {
 			}
 			updateFocus(currentIndex);
 		}else if(e.key === 'Enter'){
-			cards[i].click();
+			console.log("PFJEOIFJOIFEJ")
+			cards[currentIndex].click();
 		}
 	});
 	updateFocus(currentIndex);
-}
-
-
-export const photographerNavigation = () => {
 }

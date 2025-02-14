@@ -52,7 +52,6 @@ export function photographerTemplate(data) {
 
         const title = document.createElement('h1');
         title.textContent = name;
-        title.setAttribute('role', 'heading');
         const location = document.createElement('p');
         location.classList.add('location');
         location.textContent = `${city}, ${country}`;
@@ -87,9 +86,11 @@ export function photographerTemplate(data) {
     }
 
     function formContactTitle () {
+        const modal = document.getElementById('contact_modal');
+        modal.setAttribute('aria-label', `Contacte me ${name}`);
         const headerTitle = document.querySelector('.modal-header-title');
         console.log(name,"icicii")
-        const namePhotograph = document.createElement('h2');
+        const namePhotograph = document.createElement('h1');
         namePhotograph.textContent = name;
         namePhotograph.setAttribute('role', 'heading');
         headerTitle.appendChild(namePhotograph);
@@ -130,6 +131,7 @@ export function photographerTemplate(data) {
         const mediaElement = MediaFactory.createMedia(media, false);
         cardMedia.setAttribute('role', 'link');
         cardMedia.setAttribute('tabindex', '0');
+        cardMedia.setAttribute('aria-label', `Voir ${media.title}`);
         cardMedia.appendChild(mediaElement.render());
         cardMedia.addEventListener('click', () => {
             lightbox.innerHTML = '';
@@ -178,7 +180,7 @@ export function photographerTemplate(data) {
         console.log(i);
         const lightbox = document.querySelector('.lightbox');
         lightbox.setAttribute('role', 'dialog');
-        lightbox.setAttribute('aria-label', 'image closeup  view')
+        lightbox.setAttribute('aria-label', 'image closeup view')
         const leftLightbox = document.createElement('div');
         leftLightbox.classList.add('left-lightbox');
         const chevronLeft = document.createElement('i');
