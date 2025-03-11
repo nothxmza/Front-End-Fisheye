@@ -1,3 +1,4 @@
+import { MediaFactory } from "../factory/media.js";
 
 export const closeModalLightbox = () => {
 	const modal = document.getElementById("lightbox-modal");
@@ -11,39 +12,49 @@ export const displayModalLightbox = () => {
 	modal.style.display = "block";
 }
 
-export const navigationChevron = (media, i, photographerTemplate) => {
-    const lightbox = document.querySelector('.lightbox');
+const  updateMediaContent = (media, index) =>  {
+    const middleLightbox = document.querySelector('.middle-lightbox');
+    middleLightbox.innerHTML = '';
+    const mediaElement = MediaFactory.createMedia(media[index], true);
+    middleLightbox.appendChild(mediaElement.render());
+}
+
+export const navigationChevron = (media, i) => {
     const chevronLeft = document.querySelector('.chevron-left');
     const chevronRight = document.querySelector('.chevron-right');
 
     const handlePrevious = () => {
-        lightbox.innerHTML = '';
-        if(i === 0) {
-            i = 1;
+        if(i === 0){
+            i = media.length - 1;
         }
-        photographerTemplate.displayLightbox(media, i - 1, photographerTemplate);
+        else{
+            i--;
+        }
+        updateMediaContent(media, i);
     };
 
     const handleNext = () => {
-        lightbox.innerHTML = '';
-        if(i === media.length - 1) {
-            i = i - 1;
+        if(i === media.length - 1){
+            i = 0;
         }
-        photographerTemplate.displayLightbox(media, i + 1, photographerTemplate);
+        else{
+            i++;
+        }
+        updateMediaContent(media, i);
     };
 
     chevronLeft.addEventListener('click', handlePrevious);
     chevronRight.addEventListener('click', handleNext);
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
+        if (e.key === 'ArrowLeft'){
             handlePrevious();
-        } else if (e.key === 'ArrowRight') {
+        }
+        else if (e.key === 'ArrowRight'){
             handleNext();
-        } else if (e.key === 'Escape') {
-            console.log("fmewomoei")
+        }
+        else if (e.key === 'Escape'){
             closeModalLightbox();
         }
     });
-    
-}
+};

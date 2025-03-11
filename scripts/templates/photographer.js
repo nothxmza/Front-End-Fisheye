@@ -136,14 +136,14 @@ export function photographerTemplate(data) {
         cardMedia.addEventListener('click', () => {
             lightbox.innerHTML = '';
             displayModalLightbox();
-            displayLightbox(mediaList, mediaIndex, photographerTemplate);
+            displayLightbox(mediaList, mediaIndex);
         });
 
         cardMedia.addEventListener('keydown', (e) => {
             if(e.key === 'Enter'){
                 lightbox.innerHTML = '';
                 displayModalLightbox();
-                displayLightbox(mediaList, mediaIndex, photographerTemplate);
+                displayLightbox(mediaList, mediaIndex);
             }
         });
 
@@ -176,7 +176,7 @@ export function photographerTemplate(data) {
         return card;
     }
 
-    function displayLightbox(media, i, photographertemplate){
+    function displayLightbox(media, i){
         console.log(i);
         const lightbox = document.querySelector('.lightbox');
         lightbox.setAttribute('role', 'dialog');
@@ -221,8 +221,7 @@ export function photographerTemplate(data) {
         lightbox.appendChild(leftLightbox);
         lightbox.appendChild(middleLightbox);
         lightbox.appendChild(rightLightbox);
-
-        navigationChevron(media, i, photographertemplate);
+        navigationChevron(media, i);
     }
 
     return { name, picture, getUserCardDOM, displayPhotographerData, formContactTitle, displayInfoPhotographer, mediaCard, displayLightbox };
