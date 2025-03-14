@@ -89,7 +89,7 @@ export function photographerTemplate(data) {
 
     // Affichage du titre du formulaire de contact et de l'accessibilité
     function formContactTitle () {
-        const modal = document.getElementById('contact_modal');
+        const modal = document.getElementById('contact-modal');
         modal.setAttribute('aria-label', `Contacte me ${name}`);
         const headerTitle = document.querySelector('.modal-header-title');
         console.log(name,"icicii")

@@ -1,12 +1,11 @@
 export function displayModal() {
-    const modal = document.getElementById("contact_modal");
+    const modal = document.getElementById("contact-modal");
     
     modal.style.display = "block";
     modal.classList.remove("modal-close");
     modal.classList.add("modal-open");
     
     const focusableElements = modal.querySelectorAll('button,input');
-    console.log(focusableElements);
     const firstFocusableElement = focusableElements[0];
     const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
@@ -26,7 +25,9 @@ export function displayModal() {
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
+    const modal = document.getElementById("contact-modal");
+    const form = document.getElementById("contact-form");
+    form.reset();
     modal.style.display = "none";
     modal.classList.remove("modal-open");
     modal.classList.add("modal-close");
