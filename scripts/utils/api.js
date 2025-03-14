@@ -1,12 +1,8 @@
 //recuperation des données de photographes et de médias
 export const getPhotographers = async () => {
-	try{
-		const response = await fetch('data/photographers.json');
-		const data = await response.json();
-		return data;
-	}catch(e){
-		console.error(e);
-	}
+	const response = await fetch('data/photographers.json');
+	const data = await response.json();
+	return data;
 }
 
 //recuperation des données d'un photographe et de ses médias

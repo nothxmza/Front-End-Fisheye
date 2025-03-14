@@ -4,7 +4,6 @@ import { displayModal } from "../utils/contactForm.js";
 
 // Template pour les photographes
 export function photographerTemplate(data) {
-    console.log(data);
     const { id, name, city, country, tagline, price, portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -92,7 +91,6 @@ export function photographerTemplate(data) {
         const modal = document.getElementById('contact-modal');
         modal.setAttribute('aria-label', `Contacte me ${name}`);
         const headerTitle = document.querySelector('.modal-header-title');
-        console.log(name,"icicii")
         const namePhotograph = document.createElement('h1');
         namePhotograph.textContent = name;
         namePhotograph.setAttribute('role', 'heading');
@@ -183,7 +181,6 @@ export function photographerTemplate(data) {
 
     // Affichage de la lightbox
     function displayLightbox(media, i){
-        console.log(i);
         const lightbox = document.querySelector('.lightbox');
         lightbox.setAttribute('role', 'dialog');
         lightbox.setAttribute('aria-label', 'image closeup view')
