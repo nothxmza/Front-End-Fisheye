@@ -24,13 +24,13 @@ export const displayMedia = (photographerTplt, photographerMedia, filter) => {
 
 	if(filter){
 		photographerMedia.forEach((media, i) => {
-			const mediaCard = photographerTplt.mediaCard(media, photographerMedia, i, photographerTplt, updateTotalLikes);
+			const mediaCard = photographerTplt.mediaCard(media, photographerMedia, i, updateTotalLikes);
 			mediaSection.appendChild(mediaCard);
 		});
 	}else{
 		let media = photographerMedia.sort((a, b) => b.likes - a.likes);
 		media.forEach((media, i) => {
-			const mediaCard = photographerTplt.mediaCard(media, photographerMedia, i, photographerTplt, updateTotalLikes);
+			const mediaCard = photographerTplt.mediaCard(media, photographerMedia, i, updateTotalLikes);
 			mediaSection.appendChild(mediaCard);
 		});
 	}

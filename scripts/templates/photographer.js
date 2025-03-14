@@ -121,7 +121,7 @@ export function photographerTemplate(data) {
     }
 
     // Création de la carte d'un média
-    function mediaCard(media, mediaList, mediaIndex, photographerTemplate, updateTotalLikes) {
+    function mediaCard(media, mediaList, mediaIndex, updateTotalLikes) {
         const card = document.createElement('article');
         const lightbox = document.querySelector('.lightbox');
         const mediaLikes = media.likes;
