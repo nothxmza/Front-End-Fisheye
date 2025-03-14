@@ -4,7 +4,6 @@ export function displayModal() {
     modal.style.display = "block";
     modal.classList.remove("modal-close");
     modal.classList.add("modal-open");
-    modal.setAttribute("aria-hidden", "false");
     
     const focusableElements = modal.querySelectorAll('button,input');
     console.log(focusableElements);
@@ -31,15 +30,16 @@ function closeModal() {
     modal.style.display = "none";
     modal.classList.remove("modal-open");
     modal.classList.add("modal-close");
-    modal.setAttribute("aria-hidden", "true");
 }
 window.closeModal = closeModal;
 
+// Fonction pour afficher les données du formulaire
 const sendDataForm = () => {
 	const firstName = document.getElementById('first-name').value;
 	const lastName = document.getElementById('last-name').value;
 	const email = document.getElementById('email').value;
 	const message = document.getElementById('message').value;
 	console.log(`firstname: ${firstName} \nlastname: ${lastName} \nemail: ${email}\nmessage: ${message}`);
+    closeModal();
 }
 window.sendDataForm = sendDataForm;

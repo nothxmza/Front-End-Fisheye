@@ -1,16 +1,17 @@
 import {displayMedia} from '../pages/photographer.js';
 
+//création du select personnalisé
 export const customSelect = (media,photographerTplt) => {
 	const button = document.getElementById("select-button");
 	const options = document.getElementById("select-options");
 	const optionItems = options.querySelectorAll("li");
 
 	button.addEventListener("click", () => {
-		options.classList.remove("hidden");
-		button.setAttribute("aria-expanded", "true");
-		button.classList.add("active");
+		options.classList.toggle("hidden");
+        button.classList.toggle("active");
+        button.setAttribute("aria-expanded", button.classList.contains("active"));
 
-		//hide item by default
+		//cache l'option déjà sélectionnées
 		optionItems.forEach(item => {
 			if (item.classList.contains("selected")) {
 				item.classList.add("hidden");
@@ -18,18 +19,12 @@ export const customSelect = (media,photographerTplt) => {
 				item.classList.remove("hidden");
 			}
 		});
-
-		//close the select by clicking again on the button
-		button.addEventListener("click", () => {
-			options.classList.toggle("hidden");
-			button.classList.toggle("active");
-		});
 	});
 	
 	optionItems.forEach(item => {
 		item.setAttribute("tabindex", "0");
 
-		//select with space
+		//select avec le clavier
 		item.addEventListener("keydown", (e) => {
 			if (e.key === "Enter") {
                 button.innerHTML = `${item.textContent} <i class="fa-solid fa-chevron-down chevron-select"></i>`;
@@ -48,11 +43,11 @@ export const customSelect = (media,photographerTplt) => {
                 item.setAttribute("aria-selected", "true");
 
                 fitlerMedia(media, item.id, photographerTplt);
-                updateBorders();
-                button.focus();
+                updateLastVisibleBorders();
             }		
         });
 
+		//select avec la souris
 		item.addEventListener("click", () => {
 			button.innerHTML = `${item.textContent} <i class="fa-solid fa-chevron-down chevron-select"></i>`;
 			button.setAttribute("aria-expanded", "false");
@@ -70,16 +65,17 @@ export const customSelect = (media,photographerTplt) => {
 			item.setAttribute("aria-selected", "true");
 
 			fitlerMedia(media, item.id,photographerTplt);
-			updateBorders();
+			updateLastVisibleBorders();
 		});
 	});
 
-	const updateBorders = () => {
+	//ne pas afficher la dernier bordure
+	const updateLastVisibleBorders = () => {
 		optionItems.forEach(li => li.classList.remove("last-visible"));
 		const visibleItems = [...optionItems].filter(li => !li.classList.contains("selected"));
 		visibleItems[visibleItems.length - 1].classList.add("last-visible");
 	};
-	updateBorders();
+	updateLastVisibleBorders();
 }
 
 const fitlerMedia = (media, filter,photographerTplt) => {
@@ -90,6 +86,5 @@ const fitlerMedia = (media, filter,photographerTplt) => {
 	}else if(filter === 'title') {
 		media.sort((a, b) => a.title.localeCompare(b.title));
 	}
-	console.log(media);
-	displayMedia(photographerTplt,media, true);
+	displayMedia(photographerTplt, media, true);
  }

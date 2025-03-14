@@ -2,12 +2,14 @@ import { MediaFactory } from "../factory/media.js";
 import {closeModalLightbox, displayModalLightbox, navigationChevron } from "../utils/lightbox.js";
 import { displayModal } from "../utils/contactForm.js";
 
+// Template pour les photographes
 export function photographerTemplate(data) {
     console.log(data);
     const { id, name, city, country, tagline, price, portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
+    // Création de la carte d'un photographe
     function getUserCardDOM() {
         const article = document.createElement('article');
 
@@ -45,6 +47,7 @@ export function photographerTemplate(data) {
         return (article);
     }
 
+    // Affichage des données d'un photographe
     function displayPhotographerData(){
         const leftHeader = document.querySelector('.photograph-header-left');
         const midleHeader = document.querySelector('.photograph-header-middle');
@@ -66,7 +69,6 @@ export function photographerTemplate(data) {
         contactButton.setAttribute('role', 'button');
         contactButton.setAttribute('tabindex', '0');
         contactButton.addEventListener('click', () => {
-            console.log("ok")
             displayModal();
         });
 
@@ -85,6 +87,7 @@ export function photographerTemplate(data) {
         document.querySelector('.photograph-header').appendChild(rightHeader);
     }
 
+    // Affichage du titre du formulaire de contact et de l'accessibilité
     function formContactTitle () {
         const modal = document.getElementById('contact_modal');
         modal.setAttribute('aria-label', `Contacte me ${name}`);
@@ -96,6 +99,7 @@ export function photographerTemplate(data) {
         headerTitle.appendChild(namePhotograph);
     }
 
+    // Affichage des informations du photographe (nombre de likes et prix)
     function displayInfoPhotographer(totalLike) {
 	    const info = document.querySelector('.info');
         const infoPhotograph = document.createElement('div');
@@ -118,10 +122,11 @@ export function photographerTemplate(data) {
         info.appendChild(infoPhotograph);
     }
 
+    // Création de la carte d'un média
     function mediaCard(media, mediaList, mediaIndex, photographerTemplate, updateTotalLikes) {
         const card = document.createElement('article');
         const lightbox = document.querySelector('.lightbox');
-        let mediaLikes = media.likes;
+        const mediaLikes = media.likes;
         card.classList.add('card');
         card.setAttribute('role', 'article');
         card.setAttribute('aria-label', media.title);
@@ -176,6 +181,7 @@ export function photographerTemplate(data) {
         return card;
     }
 
+    // Affichage de la lightbox
     function displayLightbox(media, i){
         console.log(i);
         const lightbox = document.querySelector('.lightbox');

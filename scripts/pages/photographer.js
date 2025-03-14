@@ -12,6 +12,7 @@ const totalLike = (media) => {
 	return total;
 }
 
+//afficher les médias
 export const displayMedia = (photographerTplt, photographerMedia, filter) => {
 	const mediaSection = document.querySelector('.media');
 	mediaSection.innerHTML = '';

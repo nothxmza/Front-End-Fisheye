@@ -1,7 +1,7 @@
    import { getPhotographers } from "../utils/api.js";
    import { photographerTemplate } from "../templates/photographer.js";
-    import { homeNavigation } from "../utils/keyboardNavigation.js";
    
+    // Affiche les photographes
    async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
@@ -16,7 +16,6 @@
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
         displayData(photographers);
-        homeNavigation();
     }
     
     init();

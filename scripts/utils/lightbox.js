@@ -2,23 +2,22 @@ import { MediaFactory } from "../factory/media.js";
 
 export const closeModalLightbox = () => {
 	const modal = document.getElementById("lightbox-modal");
-	modal.setAttribute("aria-hidden", "true");
 	modal.style.display = "none";
 }
 
 export const displayModalLightbox = () => {
 	const modal = document.getElementById("lightbox-modal");
-	modal.setAttribute("aria-hidden", "false");
 	modal.style.display = "block";
 }
 
-const  updateMediaContent = (media, index) =>  {
+const updateMediaContent = (media, i) =>  {
     const middleLightbox = document.querySelector('.middle-lightbox');
     middleLightbox.innerHTML = '';
-    const mediaElement = MediaFactory.createMedia(media[index], true);
+    const mediaElement = MediaFactory.createMedia(media[i], true);
     middleLightbox.appendChild(mediaElement.render());
 }
 
+//navigation clavier et click pour la lightbox
 export const navigationChevron = (media, i) => {
     const chevronLeft = document.querySelector('.chevron-left');
     const chevronRight = document.querySelector('.chevron-right');
